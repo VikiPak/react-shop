@@ -13,7 +13,7 @@ function Header(props) {
           <img width={40} height={40} src="img/logo.jpg" alt="Logotype" />
           <div>
             <h3 className="text-uppercase">React Sneakers</h3>
-            <p className="opacity-5">Сделано Глотовой В.Р. 022 группа</p>
+            <p className="opacity-5">Пов Ананастя и Википак</p>
           </div>
         </div>
       </Link>

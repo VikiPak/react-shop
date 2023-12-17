@@ -21,9 +21,9 @@ function App() {
     async function fetchData() {
       try {
         const [cartResponse, favoritesResponse, itemsResponse] = await Promise.all([
-          axios.get('https://0a47501730098c57.mokky.dev/cart'),
-          axios.get('https://0a47501730098c57.mokky.dev/favorites'),
-          axios.get('https://0a47501730098c57.mokky.dev/items'),
+          axios.get('https://12deae5706f9fb30.mokky.dev/cart'),
+          axios.get('https://12deae5706f9fb30.mokky.dev/favorites'),
+          axios.get('https://12deae5706f9fb30.mokky.dev/items'),
         ]);
 
         setIsLoading(false);
@@ -44,10 +44,10 @@ function App() {
       const findItem = cartItems.find((item) => Number(item.parentId) === Number(obj.id));
       if (findItem) {
         setCartItems((prev) => prev.filter((item) => Number(item.parentId) !== Number(obj.id)));
-        await axios.delete(`https://0a47501730098c57.mokky.dev/cart/${findItem.id}`);
+        await axios.delete(`https://12deae5706f9fb30.mokky.dev/cart/${findItem.id}`);
       } else {
         setCartItems((prev) => [...prev, obj]);
-        const { data } = await axios.post('https://0a47501730098c57.mokky.dev/cart', obj);
+        const { data } = await axios.post('https://12deae5706f9fb30.mokky.dev/cart', obj);
         setCartItems((prev) =>
           prev.map((item) => {
             if (item.parentId === data.parentId) {
@@ -68,7 +68,7 @@ function App() {
 
   const onRemoveItem = (id) => {
     try {
-      axios.delete(`https://0a47501730098c57.mokky.dev/cart/${id}`);
+      axios.delete(`https://12deae5706f9fb30.mokky.dev/cart/${id}`);
       setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(id)));
     } catch (error) {
       alert('Ошибка при удалении из корзины');
@@ -79,11 +79,11 @@ function App() {
   const onAddToFavorite = async (obj) => {
     try {
       if (favorites.find((favObj) => Number(favObj.id) === Number(obj.id))) {
-        axios.delete(`https://0a47501730098c57.mokky.dev/favorites/${obj.id}`);
+        axios.delete(`https://12deae5706f9fb30.mokky.dev/favorites/${obj.id}`);
         setFavorites((prev) => prev.filter((item) => Number(item.id) !== Number(obj.id)));
       } else {
         const { data } = await axios.post(
-          'https://0a47501730098c57.mokky.dev/favorites',
+          'https://12deae5706f9fb30.mokky.dev/favorites',
           obj,
         );
         setFavorites((prev) => [...prev, data]);

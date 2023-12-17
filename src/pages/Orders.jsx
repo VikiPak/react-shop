@@ -12,7 +12,7 @@ function Orders() {
   React.useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get('https://0a47501730098c57.mokky.dev/orders');
+        const { data } = await axios.get('https://12deae5706f9fb30.mokky.dev/orders');
         setOrders(data.reduce((prev, obj) => [...prev, ...obj.items], []));
         setIsLoading(false);
       } catch (error) {
